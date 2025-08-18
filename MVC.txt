@@ -1,0 +1,5 @@
+✅ What Should Happen in MVC?
+Layer	Responsibility
+Model	Handle data & business logic — e.g. CreateUser()
+Controller	Handle input, sessions, redirection
+View	HTML templates — e.g. form, headers

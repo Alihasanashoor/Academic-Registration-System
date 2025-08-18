@@ -1,0 +1,4 @@
+foreach ($array as $key => $value) {
+    // $key is the array's index (number or string)
+    // $value is the data at that position
+}
