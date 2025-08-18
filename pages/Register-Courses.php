@@ -4,6 +4,9 @@ session_start();
 if(!($_SESSION['User_ID'] && $_SESSION['Password'])){
     header("Location: index.php");
 }
+if(!isset($_SESSION['UserCourse'])){
+    $_SESSION['UserCourse']=[];
+}
 
 $pageTitle="Register Courses"; //set page title
 $cssFs = __DIR__ . '/../Style/Register-Courses-Style.css';// filesystem path to the css file
