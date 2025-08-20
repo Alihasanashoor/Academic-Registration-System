@@ -1,5 +1,6 @@
 <?php
-
+require_once __DIR__ .'/../Classes/Student.php';
+   
 class DataManagerMock implements IDataManager{
 
     public static function getstudents(): array {
@@ -114,17 +115,19 @@ class DataManagerMock implements IDataManager{
     }
 
     public static function ShowRegisteredCourse($Student_ID): array {
-        // Implementation to fetch and return a list of registered courses for a user
-        //if UserCoures list exsist return UserCoures
-          if (session_status() === PHP_SESSION_NONE) session_start();
-          if (!isset($_SESSION['UserCourse'])) {
-            foreach(DataManagerMock::getStudentINcourse($Student_ID) as $ID){
-                 if($ID["Student_ID"]==$Student_ID){
-                    foreach(DataManagerMock::ShowAvailableCourses() as $key=> $value){
-                        if($ID["Course ID"]==$value["Course ID"]){
-                            $_SESSION["UserCourse"][]=$value;
-                            
+        //Implementation to fetch and return a list of registered courses for a user
+          //check $_SESSION["UserCourse"] exist or is it array
+          if (!isset($_SESSION['UserCourse']) || !is_array($_SESSION['UserCourse'])){
+            $_SESSION['UserCourse'] = []; //crate empty
+            /*loop over the list and check student id in the list is the same as the one 
+            who is loged in and add the course to $_SESSION["UserCourse"] */
+            foreach(self::getStudentINcourse(null) as $ID){
+                 if(($ID["Student_ID"] ?? '')==$Student_ID){
+                    foreach(self::ShowAvailableCourses() as $key=> $value){
+                        if(($ID["Course ID"] ?? '')==($value["Course ID"] ?? '')){
+                            $_SESSION["UserCourse"][]=$value;   
                         }
+                       
                     }
                 }
 
