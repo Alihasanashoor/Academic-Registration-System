@@ -3,6 +3,9 @@ require_once __DIR__ . '/../Classes/UserManager.php';
 require_once __DIR__ .'/../Classes/User.php';
 require_once __DIR__ .'/../Classes/Course.php';
 require_once __DIR__ .'/../Classes/Teacher.php';
+require_once __DIR__ .'/../Classes/IDataManager.php';
+require_once __DIR__ .'/../Classes/DataManagerMock.php';
+require_once __DIR__ .'/../Classes/DataManager.php';
 
 class Student extends User{
     
@@ -21,9 +24,11 @@ class Student extends User{
                
                     if($value["Course ID"] == $_POST["Course_ID"]){
                     //cheack if the session array exsist
-                        if(!isset($_SESSION["UserCourse"])){
+                        if(!isset($_SESSION["UserCourse"]) ){
                             //crate session array if not exsist
                             $_SESSION["UserCourse"]=[];
+                            
+
                         }
                     
                         // Collect all enrolled course IDs for this session
@@ -63,15 +68,25 @@ class Student extends User{
                             include __DIR__ . '/../View/Enroll-State.php';
                             return;
                         }
-                            else{
+                        
                             //check if on hold list exist if not crate it 
-                            if(!isset($_SESSION["OnHoldList"])){
+                            if(!isset($_SESSION["OnHoldList"])|| !is_array($_SESSION['OnHoldList'])){
                                 $_SESSION["OnHoldList"]=[];
                             }
+                            foreach ($_SESSION['OnHoldList'] as $row) {
+                            if (($row['Student ID'] ?? null) === $_SESSION['User_ID'] &&
+                                ($row['Course ID']  ?? null) === $value['Course ID']) {
+                                    $status = 'already-OnHold';
+                                    $CourseID = $value['Course ID'];
+                                    $CourseName = $value['Course Name'];
+                                    include __DIR__ . '/../View/Enroll-State.php';
+                                    return;
+                                    }
+}
                             //add student if course is full
                             $_SESSION["OnHoldList"][]=
-                            ["Coures ID" => $value["Course ID"],
-                            "Coures Name" => $value["Course Name"],
+                            ["Course ID" => $value["Course ID"],
+                            "Course Name" => $value["Course Name"],
                             "Student ID" => $_SESSION["User_ID"],
                             "Name" => $this->getName()
                         ];
@@ -83,7 +98,7 @@ class Student extends User{
                             //load message
                             include __DIR__ . '/../View/Enroll-State.php';
                             return;
-                            }
+                            
 
                         }
                 

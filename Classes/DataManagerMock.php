@@ -77,6 +77,12 @@ class DataManagerMock implements IDataManager{
             ["Student_ID"=> "006","Name"=>"Fahad","Course ID" => "CS001" ],
             ["Student_ID"=> "007","Name"=>"Lina","Course ID" => "CS001" ],
             ["Student_ID"=> "008","Name"=>"Layla","Course ID" => "CS001" ],
+            ["Student_ID"=> "003","Name"=>"Tariq","Course ID" => "CS001" ],
+            ["Student_ID"=> "005","Name"=>"Mariam","Course ID" => "CS001" ],
+            ["Student_ID"=> "006","Name"=>"Fahad","Course ID" => "CS001" ],
+            ["Student_ID"=> "007","Name"=>"Lina","Course ID" => "CS001" ],
+            ["Student_ID"=> "008","Name"=>"Layla","Course ID" => "CS001" ],
+            
             
             ["Student_ID"=> "002","Name"=>"Khalid","Course ID" => "STATS215" ],
             ["Student_ID"=> "005","Name"=>"Mariam","Course ID" => "STATS215" ],
@@ -84,11 +90,17 @@ class DataManagerMock implements IDataManager{
             ["Student_ID"=> "001","Name"=>"Yusuf","Course ID" => "VG500" ],
             ["Student_ID"=> "005","Name"=>"Mariam","Course ID" => "VG500" ],
             ["Student_ID"=> "006","Name"=>"Fahad","Course ID" => "VG500" ],
-            
+            //need fix the names and ids
             ["Student_ID"=> "003","Name"=>"Tariq","Course ID" => "OOP410" ],
             ["Student_ID"=> "004","Name"=>"Sami","Course ID" => "OOP410" ],
             ["Student_ID"=> "007","Name"=>"Lina","Course ID" => "OOP410" ],
-            ["Student_ID"=> "008","Name"=>"Layla","Course ID" => "OOP410" ]
+            ["Student_ID"=> "008","Name"=>"Layla","Course ID" => "OOP410" ],
+            ["Student_ID"=> "003","Name"=>"Tariq","Course ID" => "OOP410" ],
+            ["Student_ID"=> "004","Name"=>"Sami","Course ID" => "OOP410" ],
+            ["Student_ID"=> "007","Name"=>"Lina","Course ID" => "OOP410" ],
+            ["Student_ID"=> "008","Name"=>"Layla","Course ID" => "OOP410" ],
+            ["Student_ID"=> "003","Name"=>"Tariq","Course ID" => "OOP410" ],
+            ["Student_ID"=> "004","Name"=>"Sami","Course ID" => "OOP410" ]
         ];
         return $StudentINcourse;
         
