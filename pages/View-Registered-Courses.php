@@ -5,6 +5,7 @@ session_start();
 if(!($_SESSION['User_ID'] && $_SESSION['Password'])){
     header("Location: index.php");
 }
+
 $pageTitle="View Registerd Coures"; //page title
 
 // filesystem path to the css file
@@ -50,17 +51,15 @@ $Data = new Data();
 if ($Data->connection) {
     // DB path later
 } else {
-    // Only set the initial list once (first visit or after login)
-        $_SESSION['UserCourse'] = DataManagerMock::ShowRegisteredCourse($_SESSION['User_ID'])??[];
-        
-    }
-
+    $seed=DataManagerMock::ShowRegisteredCourse($_SESSION['User_ID']);
+    $_SESSION['UserCourse'] = is_array($seed)? $seed :[];
+    
+}
 
 //viwe
 require_once __DIR__ . '/../view/ShowRegisteredCourseTable_Template.php';
 require_once __DIR__ .'/../View/Register-Courses-Button.php'; //load a button so it gose to Register Courses page
 require_once __DIR__ .'/../View/OnHold-Button.php'; //load a button so it gose to Register Courses page
-
 require_once __DIR__ .'/../View/Logout.php'; //load logout button
 
 //handel logout button

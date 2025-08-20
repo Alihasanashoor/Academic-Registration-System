@@ -4,9 +4,6 @@ session_start();
 if(!($_SESSION['User_ID'] && $_SESSION['Password'])){
     header("Location: index.php");
 }
-if(!isset($_SESSION['UserCourse'])){
-    $_SESSION['UserCourse']=[];
-}
 
 $pageTitle="Register Courses"; //set page title
 $cssFs = __DIR__ . '/../Style/Register-Courses-Style.css';// filesystem path to the css file
@@ -32,14 +29,6 @@ if (isset($_SESSION['Role'], $_SESSION['User_ID'], $_SESSION['Password']) && $_S
     $UserManager = new UserManager();
     $student = $UserManager->CreateUser($_SESSION['User_ID'], $_SESSION['Password']);
 }
-
-if (isset($_SESSION['UserCourse']) || isset($_SESSION["OnHoldList"])) {
-    $_SESSION['UserCourse'] = DataManagerMock::ShowRegisteredCourse($_SESSION['User_ID']);
-    $_SESSION["OnHoldList"]=DataManagerMock::ONHoldStudents($_SESSION['User_ID']);
-}
-
-
-
 // Handle enroll action
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['EnrollNow'])) {
     if ($student instanceof Student) {
