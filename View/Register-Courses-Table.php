@@ -32,7 +32,8 @@
                     <form method="POST">
                         <input type="hidden" name="Course_ID" value= "<?=htmlspecialchars($course["Course ID"])?>">
                         <button type="submit" name="EnrollNow" class="enroll-btn">Enroll Now</button>
-                </form>
+                
+                    </form>
             </td>
         </tr>
         <?php endforeach; ?>

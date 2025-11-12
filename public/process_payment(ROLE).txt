@@ -1,0 +1,21 @@
+===========================================================
+  Entry Point: process_payment.php
+===========================================================
+ ROLE (Why this file exists):
+ 	• Acts as a tiny "front controller" only for the PAY action.
+ 	• Receives POST from the courses table (Pay button).
+ 	• Creates PaymentsController and calls payCourse().
+ 	• The controller then:
+ 		- validates input
+ 		- calls Payment API
+ 		- builds $result
+	 	- require_once the view: /View/transactions/transaction_result.php
+ 
+ WHY NOT POST DIRECTLY TO THE VIEW?
+ 	• In MVC, views never perform business logic.
+ 	• All logic must run in the controller, then the controller renders the view.
+
+ SECURITY:
+	 • Uses POST only. Consider adding a CSRF token on the form and verify it.
+	 • Never trust $_POST—controller re-validates everything.
+ 

@@ -28,7 +28,6 @@ class Student extends User{
                             //crate session array if not exsist
                             $_SESSION["UserCourse"]=[];
                             
-
                         }
                     
                         // Collect all enrolled course IDs for this session
@@ -85,9 +84,9 @@ class Student extends User{
 }
                             //add student if course is full
                             $_SESSION["OnHoldList"][]=
-                            ["Course ID" => $value["Course ID"],
+                            ["Course_ID" => $value["Course ID"],
                             "Course Name" => $value["Course Name"],
-                            "Student ID" => $_SESSION["User_ID"],
+                            "Student_ID" => $_SESSION["User_ID"],
                             "Name" => $this->getName()
                         ];
                             //for the message design
@@ -109,7 +108,7 @@ class Student extends User{
     }
 
     //function for drop course process
-    public function DropCourse(){
+    public function DropCourse(){ 
         
             
            //save Coures ID into a variable for output message
@@ -123,8 +122,21 @@ class Student extends User{
                     echo'<div class="unenroll-success">';
                     echo '<b>'.$id.'</b>' . " has been droped";
                     echo '</div>';  
-                }
+                } 
             }
+            if(isset($_SESSION['OnHoldList']) && is_array($_SESSION['OnHoldList'])){
+                   foreach($_SESSION['OnHoldList'] as $on_hold => $course){
+                        $course_id = $course['Course_ID'] ?? $course['Course_ID']??null;
+                        if($course_id == $id){
+                            unset($_SESSION['OnHoldList'][$on_hold]);
+                            echo'<div class="unenroll-success">';
+                            echo " The request has been canceled";
+                            echo '</div>';  
+                        }
+                    }
+            }
+            
+            
         
     
 }

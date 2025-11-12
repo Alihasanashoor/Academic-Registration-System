@@ -19,7 +19,8 @@
             <th>Time</th>
             <th>Day</th>
             <th>Price</th>
-            <th></th>
+            <th>Drop</th>
+            <th>Payment</th>
         </tr> <!--end table row-->
     </thead>
     <tbody>
@@ -40,6 +41,16 @@
                     <input type="hidden" name="Course_ID" value= "<?=htmlspecialchars($course["Course ID"])?>">
                     <button type="submit" name="UnEnrollNow" class="Drop-btn">Drop</button>
               </form>
+            </td>
+            <td>
+                <form method="POST" action="../public/process_payment.php">
+                    <!-- The controller expects these keys: Course_ID and Price -->
+                    <input type="hidden" name="Course_ID" value="<?=htmlspecialchars($course["Course ID"])?>">
+                    <input type="hidden" name="Price" value="<?=(float) str_replace(' BD','',$course['Price'])?>">
+                    
+                    <!-- Name the submit 'pay' so the controller's bootstrap can detect it if needed -->
+                    <button type="submit" name="pay" class="Drop-btn">PAY</button>
+                </form>
             </td>
          <!--end table row-->
          </tr>

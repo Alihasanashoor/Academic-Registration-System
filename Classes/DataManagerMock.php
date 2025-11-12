@@ -106,15 +106,15 @@ class DataManagerMock implements IDataManager{
         
     }
     public static function ONHoldStudents($StudentID){
-
         
         $OnHoldLsit=[
             ["Course ID" => "CS001" , "Course Name" => "Java Basics","Student_ID"=> "009","Name"=>"Adel" ],
             ["Course ID" => "VG500" , "Course Name" => "Video Game Developement","Student_ID"=> "010","Name"=>"Sara"],
             ["Course ID" => "OOP410" , "Course Name" => "Java Object Oriented Programming","Student_ID"=> "011","Name"=>"Hassan"]
         ];
-        $_SESSION["OnHoldList"]=[];
-        
+        if(!isset($_SESSION["OnHoldList"]) || !is_array($_SESSION["OnHoldList"])){
+            $_SESSION["OnHoldList"]=[];
+        }
         if($_SESSION['User_ID']==$StudentID){
             foreach($OnHoldLsit as $key=>$val){
                 if($_SESSION['User_ID']==$val['Student_ID']){
@@ -125,12 +125,13 @@ class DataManagerMock implements IDataManager{
     }
         return $_SESSION["OnHoldList"] ;
     }
-
+    
     public static function ShowRegisteredCourse($Student_ID): array {
         //Implementation to fetch and return a list of registered courses for a user
           //check $_SESSION["UserCourse"] exist or is it array
           if (!isset($_SESSION['UserCourse']) || !is_array($_SESSION['UserCourse'])){
             $_SESSION['UserCourse'] = []; //crate empty
+            
             /*loop over the list and check student id in the list is the same as the one 
             who is loged in and add the course to $_SESSION["UserCourse"] */
             foreach(self::getStudentINcourse(null) as $ID){

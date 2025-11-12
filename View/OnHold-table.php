@@ -35,13 +35,13 @@
         <div class="no-db-msg">No database connection detected. Showing default data.</div>
         <?php foreach(DataManagerMock::ONHoldStudents($_SESSION['User_ID']) as $student):?>
         <tr>
-            <td><?= htmlspecialchars($student["Course ID"])?></td>
+            <td><?= htmlspecialchars($student["Course_ID"])?></td>
             <td><?= htmlspecialchars($student["Course Name"])?></td>
             <td>On hold</td>
             <td>
                 <form method="POST">
-                    <input type="hidden" name="Course_ID" value= "<?=htmlspecialchars($student["Course ID"])?>">
-                    <button type="submit" name="cancel" class="cancel-btn">Cancel </button>
+                    <input type="hidden" name="Course_ID" value= "<?=htmlspecialchars($student["Course_ID"])?>">
+                    <button type="submit" name="UnEnrollNow" class="Drop-btn">Cancel </button>
                 </form>
             </td>
         </tr>

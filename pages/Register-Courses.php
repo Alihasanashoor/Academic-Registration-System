@@ -39,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['EnrollNow'])) {
     }
 }
 
+
 //view
 require_once __DIR__ .'/../View/Header.php' ; // Include the header template (contains HTML <head> and top structure)
 require_once __DIR__ .'/../View/Register-Courses-Table.php'; //load courses data for enrollment

@@ -30,7 +30,7 @@ class LoginController{
             
             
             //go to Register Courses page
-            header("Location: Register-Courses.php"); //will change it to the correct page when its crated
+            header("Location: View-Registered-Courses.php"); //will change it to the correct page when its crated
             exit;
         }
         //check if UserObj is teacher
@@ -52,7 +52,7 @@ class LoginController{
             session_unset();    // Unset all session variables
             session_destroy();  // Then destroy the session
             session_regenerate_id(true); //delete old session for security 
-            header("Location: index.php");
+            header('Location: /Academic%20Registration%20System/resturcterd/pages/index.php');
             exit;
         }
     }

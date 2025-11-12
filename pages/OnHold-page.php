@@ -29,11 +29,14 @@ if (isset($_SESSION['Role'], $_SESSION['User_ID'], $_SESSION['Password']) && $_S
     $student = $UserManager->CreateUser($_SESSION['User_ID'], $_SESSION['Password']);
 }
 
-if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['cancel'])){
-    if ($student instanceof Student){
+
+//handel Drop butoon
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST["UnEnrollNow"])){
+    if($student instanceof Student){
         $student->DropCourse();
     }
 }
+
 require_once __DIR__ . '/../view/OnHold-table.php';
 require_once __DIR__ .'/../View/View-Registered-Courses-Button.php'; //load a button so it gose to View Registered Courses page
 require_once __DIR__ .'/../View/Logout.php'; //load logout button
