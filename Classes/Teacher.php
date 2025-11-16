@@ -15,18 +15,19 @@ class Teacher extends User{
         //loop over the data
         foreach($StuffDetails as $stuff){
             //check the id if match and check role if teacher
-            if($stuff['Stuff_ID']== $User_ID &&  $stuff['Password']==$Password &&$stuff['Role']=="teacher"){
+            if($stuff['Teacher_ID']== $User_ID &&  $stuff['Password']==$Password &&$stuff['Role']=="teacher"){
                 //if role is teacher set session role to teacher
                 $_SESSION['Role']="teacher";
-                //go to Home page
-                echo " welcome";
-                //header("Location: Home.php"); //will change it to the correct page when its crated
+                $_SESSION['User_ID'] = $User_ID;
+                $_SESSION['Teacher_ID'] = $User_ID;
+                
+                header("Location: Assigned_Courses.php"); //Show the assigned courses
                 exit;
             }
             }
             
             echo " not a teacher";
-            //header("Location: Home.php"); //will change it to the correct page when its crated
+            header("Location: index.php"); 
             
         
         }
@@ -36,16 +37,16 @@ class Teacher extends User{
         if($this->Data->connection){
             //when database crated here will be using database process
         }
-
+        
         //if no database connection
         else{
-            $Assigned_Courses=[];
+            $Assigned_Courses = [];
         /*loop over the static method in DataManagerMock
         and check if the id is the same and display the 
         courses if yes*/
-        foreach(DataManagerMock::getAssignedCourses($TeacherID) as $key => $value){
-            if($value["Stuff_ID"]==$TeacherID){
-                $Assigned_Courses[]=$value["Course_ID"];
+        foreach(DataManagerMock::getAssignedCourses($TeacherID) as $course){
+            if($course["Teacher_ID"]==$TeacherID){
+                $Assigned_Courses[]=$course;
             }
         }
         return $Assigned_Courses;

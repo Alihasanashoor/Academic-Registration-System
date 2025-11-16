@@ -46,11 +46,11 @@ require_once __DIR__ .'/../View/Register-Courses-Table.php'; //load courses data
 require_once __DIR__ .'/../View/View-Registered-Courses-Button.php'; //load a button so it gose to View Registered Courses page
 require_once __DIR__ .'/../View/Logout.php'; //load logout button
 
-//handel logout button
-if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST['Logout'])){
-    $controller = new LoginController();
-    $controller->Logout();
-}
+// Load the logout controller responsible for handling user sign-out actions.
+require_once  __DIR__.'/../Controllers/LogoutController.php';
+// Execute the logout handler to terminate the current user session
+// and perform any necessary cleanup or redirection. 
+LogoutController::handle();
 
 
 ?>

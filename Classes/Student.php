@@ -1,6 +1,7 @@
 <?php 
-require_once __DIR__ . '/../Classes/UserManager.php';
-require_once __DIR__ .'/../Classes/User.php';
+// Load all required class definitions used across the system.
+require_once __DIR__ . '/../Classes/UserManager.php'; 
+require_once __DIR__ .'/../Classes/User.php';         
 require_once __DIR__ .'/../Classes/Course.php';
 require_once __DIR__ .'/../Classes/Teacher.php';
 require_once __DIR__ .'/../Classes/IDataManager.php';
@@ -9,11 +10,11 @@ require_once __DIR__ .'/../Classes/DataManager.php';
 
 class Student extends User{
     
-    //function for enrollment
+    // function for enrollment
     public function EnrollCourse(){
 
         if($this->Data->connection){
-            //when database crated here will be using database process
+            // When database crated here will be using database process
         }
         
         else{
@@ -73,11 +74,17 @@ class Student extends User{
                                 $_SESSION["OnHoldList"]=[];
                             }
                             foreach ($_SESSION['OnHoldList'] as $row) {
+                                /* Check if the logged-in student matches the entry
+                                    AND if the course ID matches the course currently being processed. */
                             if (($row['Student ID'] ?? null) === $_SESSION['User_ID'] &&
                                 ($row['Course ID']  ?? null) === $value['Course ID']) {
+                                    //for the message design
                                     $status = 'already-OnHold';
+                                    //save course ID into variable
                                     $CourseID = $value['Course ID'];
+                                    //save course name into variable
                                     $CourseName = $value['Course Name'];
+                                    //load message
                                     include __DIR__ . '/../View/Enroll-State.php';
                                     return;
                                     }
@@ -124,9 +131,13 @@ class Student extends User{
                     echo '</div>';  
                 } 
             }
+            // Check if the OnHoldList session exists and is a valid array
             if(isset($_SESSION['OnHoldList']) && is_array($_SESSION['OnHoldList'])){
+                // Loop through all on-hold course requests
                    foreach($_SESSION['OnHoldList'] as $on_hold => $course){
+                        // Extract the course ID 
                         $course_id = $course['Course_ID'] ?? $course['Course_ID']??null;
+                        // If the selected course matches the on-hold entry, remove it
                         if($course_id == $id){
                             unset($_SESSION['OnHoldList'][$on_hold]);
                             echo'<div class="unenroll-success">';

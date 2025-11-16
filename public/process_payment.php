@@ -1,6 +1,4 @@
 <?php
-//check role if not student exit the page; 
-
 //Require the controller class (adjust path if your tree differs)
 require_once __DIR__ . '/../Controllers/PaymentsController.php';
 //load the LoginController from the Controllers directory

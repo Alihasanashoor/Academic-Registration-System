@@ -36,6 +36,12 @@ if (isset($_SESSION['Role'], $_SESSION['User_ID'], $_SESSION['Password']) && $_S
     $student = $UserManager->CreateUser($_SESSION['User_ID'], $_SESSION['Password']);
 }
 
+// Load the logout controller responsible for handling user sign-out actions.
+require_once  __DIR__.'/../Controllers/LogoutController.php';
+// Execute the logout handler to terminate the current user session
+// and perform any necessary cleanup or redirection. 
+LogoutController::handle();
+
 //handel Drop butoon
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST["UnEnrollNow"])){
     if($student instanceof Student){
@@ -62,11 +68,7 @@ require_once __DIR__ .'/../View/Register-Courses-Button.php'; //load a button so
 require_once __DIR__ .'/../View/OnHold-Button.php'; //load a button so it gose to Register Courses page
 require_once __DIR__ .'/../View/Logout.php'; //load logout button
 
-//handel logout button
-if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST['Logout'])){
-    $controller = new LoginController();
-    $controller->Logout();
-}
+
 
 
 ?>

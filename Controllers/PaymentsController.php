@@ -34,7 +34,7 @@ final class PaymentsController{
     //call the Payment API’s /v1/students/resolve to get the card.
 $linkIdRaw = (string)($_SESSION['User_ID'] ?? '');
 $numeric   = ltrim($linkIdRaw, '0'); // "007" -> "7" ; "14" -> "14"
-//!!!!!!!!!!!!!!!!!!need to learn this!!!!!!!!!!!!!!!!!!!
+
 // Candidate list, in order of likelihood for your DB style:
 $candidates = [];
 if ($linkIdRaw !== '') {
@@ -84,7 +84,7 @@ if ($cardId <= 0) {
     //CASE A: Sucuess (HTTP 201 and status=Sucuess)
     
 
-    //need fixing 
+    
         $transaction = [
         // Status from API
         'status' => $body['status'] ?? ($body['transaction']['status'] ?? ''),
@@ -95,7 +95,7 @@ if ($cardId <= 0) {
     ?? ($body['card_ID'] ?? null)                         // e.g. { "Card_ID": 910 }
     ?? ($body['transaction']['card_id'] ?? null)          // e.g. { "transaction": { "card_id": 910 } }
     ?? ($body['transaction']['Card_ID'] ?? null)          // e.g. { "transaction": { "Card_ID": 910 } }
-    ?? $cardId                                            // ✅ fallback to resolved value so table is never N/A
+    ?? $cardId                                            // fallback to resolved value so table is never N/A
 ),
 
         // Transaction type (if provided by API)

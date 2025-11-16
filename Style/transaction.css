@@ -108,3 +108,31 @@ body{
     margin-bottom: 15px;
     color: yellow;
 }
+
+
+    .RegisterCourses{
+        background: linear-gradient(90deg, #8f2fff 0%, #5323b2 100%);
+        color: #fff;
+        padding: 18px 50px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 6px 32px 0 rgba(146, 91, 255, 0.30), 0 2px 8px rgba(0,0,0,0.15);
+        text-shadow: 0 2px 8px rgba(138,43,226,0.2);
+        cursor: pointer;
+        outline: none;
+        transition: all 0.35s cubic-bezier(.25,.8,.25,1);
+        letter-spacing: 0.03em;
+         
+        /* Center horizontally */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .RegisterCourses:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 2px 10px rgba(176, 91, 255, 0.7), 0 6px 30px rgba(255, 255, 255, 0.1);
+
+    }
+    

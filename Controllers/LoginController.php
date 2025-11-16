@@ -36,11 +36,12 @@ class LoginController{
         //check if UserObj is teacher
         elseif($UserObj instanceof Teacher){
             //if yes set session user_id to user_id 
-            $_SESSION['User_ID']=$User_ID;
-            $_SESSION['UserObject'] = $UserObj;
+            $_SESSION['Teacher_ID']=$User_ID;
+            $_SESSION['User_ID']    = $User_ID;    // unify ID reference
+            $_SESSION['Password']   = $Password;
+            $_SESSION['Role']       = "teacher";
             //call authorizeAsTeacher from teacher class to check is the role teacher
-            $UserObj->authorizeAsTeacher($_SESSION['User_ID'],$Password);
-            //exit;
+            $UserObj->authorizeAsTeacher($_SESSION['Teacher_ID'],$Password);
         }
         
         }

@@ -34,7 +34,7 @@ class UserManager{
         // Not found among students, check teachers
         foreach(DataManagerMock::getTeachers() as $UserData){
             // Check if ID matches  and password matches
-            if($UserData['Stuff_ID'] == $User_ID 
+            if($UserData['Teacher_ID'] == $User_ID 
             //check if the password is the same as the one in the data
             && $UserData['Password']==$Password){
                 // Found: Return a new Teacher object 
@@ -43,7 +43,7 @@ class UserManager{
                 but not all may have the same permissions. */
                 return new Teacher(
                     $UserData['Name'],
-                    $UserData['Stuff_ID'],
+                    $UserData['Teacher_ID'],
                     $UserData['Password'],
                     $UserData['email'],
                     $UserData['Role'],
@@ -59,7 +59,6 @@ class UserManager{
         
     }
 
-    //function to check the logedin is teacher or student 
     
     
 }
