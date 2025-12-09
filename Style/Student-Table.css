@@ -1,0 +1,55 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background: linear-gradient(135deg, #0f0f0f,rgba(26, 26, 26, 0.8));
+    color: white;
+    }
+
+    .student-in-course-table{
+       margin: 50px;
+       border-collapse: collapse;
+       width: 80%;
+       background: linear-gradient(135deg, #0f0f0f,rgba(26, 26, 26, 0.8));
+    }
+    
+    .student-in-course-table th, .student-in-course-table td{
+    border: 1px solid #888;       /* Table border */
+    padding: 12px 18px;           /* Space inside cells */
+    text-align: left;             /* Align text left */
+    font-size: 18px;
+    }
+    .student-in-course-table th{
+    background: indigo;          /* Header background color */
+    color: #fff;                  /* Header text color */
+    font-weight: bold;
+    letter-spacing: 1px;              /* Table header text color */
+    }
+    .student-details {
+    
+    color: #fff;
+    border: 2px solid #7c1f99;  /* Match the table header's purple */
+    border-radius: 12px;
+    padding: 24px 32px;
+    width: 430px;
+    box-shadow: 0 6px 18px rgba(124,31,153,0.07);
+    font-size: 1.13em;
+    margin: 50px;
+    border-collapse: collapse;
+    width: 430px;
+    background: linear-gradient(135deg, #0f0f0f,rgba(26, 26, 26, 0.8));
+    
+}
+.student-details h3 {
+    color: #bf5fff;
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+}
+.student-details ul {
+    padding-left: 25px;
+}
+.student-details li {
+    margin-bottom: 8px;
+}
+
+    
+    

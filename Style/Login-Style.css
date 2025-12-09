@@ -1,0 +1,80 @@
+body{
+        padding: 0px;
+        margin: 0px;
+        background: linear-gradient(135deg, #0f0f0f,rgba(26, 26, 26, 0.8));
+        color: white;
+    }
+    .container{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+ .Login-form {
+   padding: 40px;
+   background-color: blueviolet;
+   border-radius: 15px;
+   width: 320px;
+   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.46);
+   animation: pulse-glow 3s infinite ease-in-out;
+   transition: all 0.4s ease-in-out;
+ }
+ .Login-form input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    animation: pluese-glow 3s infinite ease-in-out;
+    transition: all 0.4s ease-in-out;
+ }
+
+ .Login-form button{
+    
+    padding: 12px;
+    width: 60%;
+    margin-top: 15px;
+    background-color:rgba(0, 5, 10, 0.75);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.);
+    border-radius: 12px;
+    cursor: pointer;
+    animation: pulse-glow 3s infinite ease-in-out;
+    transition: all 0.4s ease-in-out;
+ }
+ .signup{
+    height: auto;
+    padding: 12px;
+    background-color: indigo;
+    border-radius: 15px;
+    width: 60%;/**this that fixed the size  */
+    margin-top: 15px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.46);
+    animation: pulse-glow 3s infinite ease-in-out;
+    transition: all 0.4s ease-in-out;
+    
+}
+
+ .Login-form input:hover{
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(176, 91, 255, 0.7), 0 6px 30px rgba(255, 255, 255, 0.1);
+ }
+ .Login-form button:hover{
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(176, 91, 255, 0.7), 0 6px 30px rgba(255, 255, 255, 0.1);
+ }
+.signup:hover{
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(176, 91, 255, 0.7), 0 6px 30px rgba(255, 255, 255, 0.1);
+}
+
+.Login-form:hover{
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(176, 91, 255, 0.7), 0 6px 30px rgba(255, 255, 255, 0.1);
+}
+.Register-link{
+    color: mediumorchid;
+    text-decoration-line: none;
+}

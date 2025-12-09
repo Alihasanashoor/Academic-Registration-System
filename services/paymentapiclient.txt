@@ -1,0 +1,18 @@
+/**
+ * PaymentApiClient
+ * ----------------
+ * This is a tiny PHP class that your web app uses to talk to your Payment API.
+ *
+ * WHY do we need this?
+ * - We don’t want to expose the API key in the browser or JavaScript.
+ * - We want a single place to send requests (withdraw, resolveStudent, etc.).
+ * - We can easily swap API URL or key later by editing one config file.
+ *
+ * HOW does it work?
+ * - It loads API base URL + API key from config/payment.php.
+ * - It offers public methods (withdraw, resolveStudent) that call your Payment API endpoints.
+ * - Under the hood it uses cURL to send JSON and get back JSON.
+ *
+ * You include this file and create a new PaymentApiClient() wherever you need to
+ * charge a student or look up their card/balance.
+ */
